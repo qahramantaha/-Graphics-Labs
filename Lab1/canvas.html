@@ -9,7 +9,7 @@
     <style type="text/css">
 
         canvas {
- border: 100px, black;
+ border: 800px, black;
 }
 	
     </style>
@@ -27,11 +27,13 @@
 		// Set the canvas up for drawing in 2D.
 		const ctx = canvas.getContext("2d");
 		// Set the fill colour to bright red.
-		ctx.fillStyle = "red";
+        ctx.fillStyle = "rgb(255, 0, 0)";
+        ctx.fillRect(500,10,50,60);
+     
 		// Create a filled rectangle 
 		
-	  ctx.font = "50px Arial";
-      ctx.fillText("QAHRAMAN", 10, 80);
+	     ctx.font = "50px Arial";
+         ctx.fillText("QAHRAMAN", 10, 80);
 		
     </script>
 
