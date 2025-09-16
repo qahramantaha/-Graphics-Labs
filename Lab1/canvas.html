@@ -34,7 +34,17 @@
 		
 	     ctx.font = "50px Arial";
          ctx.fillText("QAHRAMAN", 10, 80);
-		
+
+         // Create a triangle
+        ctx.fillStyle = "rgb(0, 255, 0)";
+        ctx.beginPath();
+        ctx.moveTo(100,110);
+        ctx.lineTo(180,300);
+        ctx.lineTo(20,300);
+        ctx.lineTo(100,110);
+        ctx.fill();
+        ctx.stroke();
+                
     </script>
 
   </body>
