@@ -81,6 +81,33 @@
         ctx.strokeRect(510, 300, 150, 110);
 
                 
+
+        //create a Pac Man
+        ctx.fillStyle = "rgb(255, 255, 0)";
+        ctx.strokeStyle = "black";
+        ctx.beginPath();
+        ctx.arc(400, 100, 50, 5 * Math.PI/4, 7 * Math.PI/4, true);
+        ctx.stroke();
+
+     
+        
+        //
+        ctx.moveTo(400, 100);
+        x = 50*Math.cos(Math.PI/4 * 5);
+        x += 400;
+        y = 50*Math.sin(Math.PI/4 * 5);
+        y += 100;
+        ctx.lineTo(x,y);
+        ctx.stroke();
+
+          ctx.moveTo(400, 100);
+        x = 50*Math.cos(Math.PI/4 * 7);
+        x += 400;
+        y = 50*Math.sin(Math.PI/4 * 7);
+        y += 100;
+        ctx.lineTo(x,y);
+        ctx.stroke();
+
     </script>
 
   </body>
