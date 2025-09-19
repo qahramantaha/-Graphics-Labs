@@ -1,1 +1,1 @@
-
+Lab 1 - In this exercise, we created shapes (square, triangle, circles and a pacman facing upwards) using polar to cartesian coordinate conversion with rgb & rgba colors and strokes using HTML canvas tags and the JavaScript canvas API.
