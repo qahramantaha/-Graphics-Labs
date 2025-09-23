@@ -43,15 +43,38 @@
       
      
 
-        // Draw method to draw the ball (stroked, not filled).
+        // Draw method to draw the pacman (stroked, not filled).
         draw() {
+              //create a Pac Man
+        ctx.fillStyle = "rgb(255, 255, 0)";
+        ctx.strokeStyle = "black";
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, 2 * Math.PI);
+        ctx.arc(this.x, this.y, this.radius, 5 * Math.PI/4, 7 * Math.PI/4, true);
         ctx.stroke();
-        ctx.closePath();
-        }
-               
 
+     
+        
+       //draw mouth
+        ctx.moveTo(this.x, this.y);
+        var line1 = this.radius*Math.cos(Math.PI/4 * 5);
+        line1 += this.x;
+        var line2 = this.radius*Math.sin(Math.PI/4 * 5);
+        line2 += this.y;
+        ctx.lineTo(line1,line2);
+        ctx.stroke();
+        
+
+        ctx.moveTo(this.x, this.y);
+        var line1 = this.radius*Math.cos(Math.PI/4 * 7);
+        line1 += this.x;
+        var line2 = this.radius*Math.sin(Math.PI/4 * 7);
+        line2 += this.y;
+        ctx.lineTo(line1,line2);
+        ctx.stroke();
+   
+       
+               
+        }
         // move method to update the y + x location.
         move() {
             this.draw();
@@ -73,9 +96,15 @@
         }
         
     }
+
+    //resize the ball/pacman
+    Resize(r) {
+        this.radius = r;
+    }
+
       }
         //create the ball
-        const ball = new Ball(10, 10, 7, 4, 3, 'blue');
+        const ball = new Ball(10, 10, 10, 4, 3, 'blue');
 
         // A function to repeat every time the animation loops.
         function repeatme() {
@@ -83,6 +112,9 @@
         ball.move();
         window.requestAnimationFrame(repeatme);
          // Get the animation going.
+
+         //resize ball
+         ball.Resize(11);
       }
         repeatme();
     </script>
