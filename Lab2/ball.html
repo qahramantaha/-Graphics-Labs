@@ -39,40 +39,51 @@
       this.ySpeed = ySpeed;
       this.xSpeed = xSpeed;
       this.radius = radius;
+
+      this.rotation = 0;
+      this.rotationSpeed = 0.1;
         }
       
      
+        rotate () {
+          this.rotation += this.rotationSpeed;
+        }
 
         // Draw method to draw the pacman (stroked, not filled).
         draw() {
+
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate(this.rotation);
+
               //create a Pac Man
         ctx.fillStyle = "rgb(255, 255, 0)";
         ctx.strokeStyle = "black";
         ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 5 * Math.PI/4, 7 * Math.PI/4, true);
+        ctx.arc(0, 0, this.radius, 5 * Math.PI/4, 7 * Math.PI/4, true);
         ctx.stroke();
 
      
         
        //draw mouth
-        ctx.moveTo(this.x, this.y);
+        ctx.moveTo(0, 0);
         var line1 = this.radius*Math.cos(Math.PI/4 * 5);
-        line1 += this.x;
+      
         var line2 = this.radius*Math.sin(Math.PI/4 * 5);
-        line2 += this.y;
+       
         ctx.lineTo(line1,line2);
         ctx.stroke();
         
 
-        ctx.moveTo(this.x, this.y);
+        ctx.moveTo(0, 0);
         var line1 = this.radius*Math.cos(Math.PI/4 * 7);
-        line1 += this.x;
+       
         var line2 = this.radius*Math.sin(Math.PI/4 * 7);
-        line2 += this.y;
+        
         ctx.lineTo(line1,line2);
         ctx.stroke();
    
-       
+       ctx.restore();
                
         }
         // move method to update the y + x location.
@@ -83,16 +94,20 @@
 
         if(this.y >= 300 - this.radius) {
             this.ySpeed = this.ySpeed * -1;
+            this.rotationSpeed = -this.rotationSpeed;
 
         } else if (this.y <= 0 + this.radius) {
             this.ySpeed = this.ySpeed * -1;
+            this.rotationSpeed = -this.rotationSpeed;
         }
         
          if(this.x >= 500 - this.radius) {
             this.xSpeed = this.xSpeed * -1;
+            this.rotationSpeed = -this.rotationSpeed;
 
         } else if (this.x <= 0 + this.radius) {
             this.xSpeed = this.xSpeed * -1;
+            this.rotationSpeed = -this.rotationSpeed;
         }
         
     }
@@ -110,6 +125,7 @@
         function repeatme() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ball.move();
+        ball.rotate();
         window.requestAnimationFrame(repeatme);
          // Get the animation going.
 
