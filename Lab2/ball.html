@@ -117,12 +117,61 @@
       }
 
     }
+
+    class Paddle {
+      constructor(x, y, width, height, speed) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+        this.speed = speed;
+        this.direction = 0;
+      }
+
+      draw() {
+        ctx.fillStyle = "blue";
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+
+      move() {
+        this.y += this.direction * this.speed;
+        // Prevent paddle from going off canvas
+        if (this.y < 0) this.y = 0;
+        if (this.y + this.height > canvas.height) this.y = canvas.height - this.height;
+
+        this.draw();
+      }
+
+
+    }
+    //create a paddle
+    const paddle = new Paddle(20, 100, 15, 60, 5);
+
     //create the ball
     const ball = new Ball(10, 10, 10, 4, 3, 'blue');
+
+    // Key handling
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'w' || e.key === 'W') {
+        paddle.direction = -1; // move up
+      } else if (e.key === 's' || e.key === 'S') {
+        paddle.direction = 1; // move down
+      }
+    });
+
+    document.addEventListener('keyup', function (e) {
+      if ((e.key === 'w' || e.key === 'W') && paddle.direction === -1) {
+        paddle.direction = 0;
+      } else if ((e.key === 's' || e.key === 'S') && paddle.direction === 1) {
+        paddle.direction = 0;
+      }
+    });
 
     // A function to repeat every time the animation loops.
     function repeatme() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      paddle.draw();
+      paddle.move();
       ball.move();
       ball.rotate();
       window.requestAnimationFrame(repeatme);
