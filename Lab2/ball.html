@@ -141,8 +141,7 @@
 
         this.draw();
       }
-
-
+    
     }
     //create a paddle
     const paddle = new Paddle(20, 100, 15, 60, 5);
@@ -158,6 +157,10 @@
       } else if (e.key === 's' || e.key === 'S') {
         paddle.direction = 1; // move down
       }
+      if (e.key === 't' || e.key === 'T') {
+        paddle.speed = 17;
+      }
+       
     });
 
     document.addEventListener('keyup', function (e) {
