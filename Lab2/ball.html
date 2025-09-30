@@ -146,6 +146,7 @@
     }
     //create a paddle
     const paddle = new Paddle(20, 100, 15, 60, 5);
+    const paddle2 = new Paddle(465, 100, 15, 60, 5);
 
     //create the ball
     const ball = new Ball(10, 10, 10, 4, 3, 'blue');
@@ -172,6 +173,8 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       paddle.draw();
       paddle.move();
+      paddle2.draw();
+      paddle2.move();
       ball.move();
       ball.rotate();
       window.requestAnimationFrame(repeatme);
@@ -181,6 +184,29 @@
       ball.Resize(11);
     }
     repeatme();
+
+    var canvasPosition = {
+      x: canvas.offsetLeft,
+      y: canvas.offsetTop
+
+    }
+    ctx.fillStyle = "rgb(255, 0, 0)";
+    canvas.addEventListener("mousemove", function (event) {
+
+
+
+      var mouse = {
+        x: event.clientX = 465,
+        y: event.clientY - canvasPosition.y
+
+      }
+
+
+      paddle2.x = mouse.x;
+      paddle2.y = mouse.y;
+    });
+
+
   </script>
 
 
