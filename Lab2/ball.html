@@ -93,22 +93,24 @@
         this.draw();
 
         this.ySpeed += this.gravity;
-
+        
         this.y += this.ySpeed;
         this.x += this.xSpeed;
         
-
+        //bottom bounce
         if (this.y >= 300 - this.radius) {
           this.y = 300 - this.radius;
           this.ySpeed *= -this.bounce;
           this.rotationSpeed = -this.rotationSpeed;
 
+          //top bounce
         } else if (this.y <= 0 + this.radius) {
           this.y = this.radius;
           this.ySpeed *= -this.bounce;
           this.rotationSpeed = -this.rotationSpeed;
         }
 
+        //side bounce (unchanged)
         if (this.x >= 500 - this.radius) {
           this.x = 500 - this.radius;
           this.xSpeed *= -1;
