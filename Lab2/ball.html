@@ -42,7 +42,7 @@
         this.rotation = 0;
         this.rotationSpeed = 0.1;
 
-        this.gravity = 0.3; 
+        this.gravity = 0.3;
         this.bounce = 0.9;
       }
 
@@ -93,10 +93,10 @@
         this.draw();
 
         this.ySpeed += this.gravity;
-        
+
         this.y += this.ySpeed;
         this.x += this.xSpeed;
-        
+
         //bottom bounce
         if (this.y >= 300 - this.radius) {
           this.y = 300 - this.radius;
@@ -114,7 +114,7 @@
         if (this.x >= 500 - this.radius) {
           this.x = 500 - this.radius;
           this.xSpeed *= -1;
-    
+
           this.rotationSpeed = -this.rotationSpeed;
 
         } else if (this.x <= 0 + this.radius) {
@@ -155,7 +155,7 @@
 
         this.draw();
       }
-    
+
     }
     //create a paddle
     const paddle = new Paddle(20, 100, 15, 60, 5);
@@ -175,7 +175,7 @@
       if (e.key === 't' || e.key === 'T') {
         ball.rotationSpeed += 0.33;
       }
-       
+
     });
 
     document.addEventListener('keyup', function (e) {
