@@ -41,6 +41,9 @@
 
         this.rotation = 0;
         this.rotationSpeed = 0.1;
+
+        this.gravity = 0.3; 
+        this.bounce = 0.9;
       }
 
       //rotation
@@ -88,24 +91,33 @@
       // move method to update the y + x location.
       move() {
         this.draw();
+
+        this.ySpeed += this.gravity;
+
         this.y += this.ySpeed;
         this.x += this.xSpeed;
+        
 
         if (this.y >= 300 - this.radius) {
-          this.ySpeed = this.ySpeed * -1;
+          this.y = 300 - this.radius;
+          this.ySpeed *= -this.bounce;
           this.rotationSpeed = -this.rotationSpeed;
 
         } else if (this.y <= 0 + this.radius) {
-          this.ySpeed = this.ySpeed * -1;
+          this.y = this.radius;
+          this.ySpeed *= -this.bounce;
           this.rotationSpeed = -this.rotationSpeed;
         }
 
         if (this.x >= 500 - this.radius) {
-          this.xSpeed = this.xSpeed * -1;
+          this.x = 500 - this.radius;
+          this.xSpeed *= -1;
+    
           this.rotationSpeed = -this.rotationSpeed;
 
         } else if (this.x <= 0 + this.radius) {
-          this.xSpeed = this.xSpeed * -1;
+          this.x = this.radius;
+          this.xSpeed *= -1;
           this.rotationSpeed = -this.rotationSpeed;
         }
 
@@ -157,8 +169,9 @@
       } else if (e.key === 's' || e.key === 'S') {
         paddle.direction = 1; // move down
       }
+      //rotation speed
       if (e.key === 't' || e.key === 'T') {
-        paddle.speed = 17;
+        ball.rotationSpeed += 0.33;
       }
        
     });
